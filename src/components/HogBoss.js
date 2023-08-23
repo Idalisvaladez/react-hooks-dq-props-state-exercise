@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Boss from "../assets/boss-hog.png";
 import BabyHog from "./BabyHog";
+import offspring from '../data.js'
+
 // import offspring from "../data.js"
 
 function HogBoss() {
@@ -9,6 +11,16 @@ function HogBoss() {
   function handleChangeEyeColor(e) {
     setEyeColor(e.target.value);
   }
+
+   const babyHogs = offspring.map((hog) => {
+    return <BabyHog 
+              key={hog.id}
+              eyecolor={eyeColor} 
+              name={offspring.name} 
+              hobby={offspring.hobby}
+          />
+   }) 
+ 
 
   return (
     <div>
@@ -40,9 +52,7 @@ function HogBoss() {
         <img id="boss-blaster" src={Boss} alt="" />
       </div>
       <ul className="hoglist">
-        <BabyHog />
-        <BabyHog />
-        <BabyHog />
+        {babyHogs}
       </ul>
     </div>
   );
